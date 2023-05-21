@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: timelimiter-deployment
+  name: kafka-deployment
 
 spec:
   selector:
@@ -16,7 +16,7 @@ spec:
 
     spec:
       containers:
-      - name: timelimiter
-        image: srinivasboini/timelimiter:v1.0.0
+      - name: spring-kafka
+        image: registry.gitlab.com/srinivasboini/kafka/spring-kafka-producer-1:20230520_051700
         ports:
         - containerPort: 80
