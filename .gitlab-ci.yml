@@ -1,0 +1,15 @@
+stages:
+  - deploy
+
+
+deploy:
+  stage: deploy
+  image:
+    name: bitnami/kubectl:latest
+    entrypoint: ['']
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context srinivasboini/spirngcloud/gitlab-terraform-gke:gke-agent
+    - kubectl get pods
+    - kubectl get ns
+    - kubectl get all
