@@ -20,6 +20,6 @@ deploy:
     - kubectl get pods 
     - kubectl get ns
     - kubectl get all
-    - kubectl apply deployment.yaml
+    - kubectl apply -f deployment.yaml
     - kubectl describe deployment nginx-deployment
 
