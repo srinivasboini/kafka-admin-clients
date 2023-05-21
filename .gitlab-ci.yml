@@ -1,15 +1,23 @@
+
+variables:
+  KUBE_CONTEXT: srinivasboini/spirngcloud/gitlab-terraform-gke:gke-agent
+
 stages:
   - deploy
 
+.kube-context:
+  before_script:
+    - if [ -n "$KUBE_CONTEXT" ]; then kubectl config use-context "$KUBE_CONTEXT"; fi
 
 deploy:
   stage: deploy
+  extends: .kube-context
   image:
     name: bitnami/kubectl:latest
     entrypoint: ['']
   script:
     - kubectl config get-contexts
-    - kubectl config use-context srinivasboini/spirngcloud/gitlab-terraform-gke:gke-agent
-    - kubectl get pods
+    # kubectl config use-context srinivasboini/spirngcloud/gitlab-terraform-gke:gke-agent
+    - kubectl get pods 
     - kubectl get ns
     - kubectl get all
