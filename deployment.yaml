@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: timelimiter-deployment
 
 spec:
   selector:
@@ -16,7 +16,7 @@ spec:
 
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
+      - name: timelimiter
+        image: srinivasboini/timelimiter:v1.0.0
         ports:
         - containerPort: 80
